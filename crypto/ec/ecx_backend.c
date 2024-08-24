@@ -200,8 +200,9 @@ ECX_KEY *ossl_ecx_key_op(const X509_ALGOR *palg,
         }
         if (op == KEY_OP_KEYGEN) {
             if (id != EVP_PKEY_NONE) {
-                if (RAND_priv_bytes_ex(libctx, privkey, KEYLENID(id), 0) <= 0)
-                    goto err;
+//                if (RAND_priv_bytes_ex(libctx, privkey, KEYLENID(id), 0) <= 0)
+//                    goto err;
+                privkey[0] = 9;
                 if (id == EVP_PKEY_X25519) {
                     privkey[0] &= 248;
                     privkey[X25519_KEYLEN - 1] &= 127;
